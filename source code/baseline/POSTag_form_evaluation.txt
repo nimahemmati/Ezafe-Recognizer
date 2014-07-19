@@ -1,0 +1,4 @@
+Ezafe presence accuracy : 0.32734274711168165
+Ezafe absence accuracy : 0.8641522029372497
+Total accuracy : 0.7533774834437086
+Recall : 0.3851963746223565
