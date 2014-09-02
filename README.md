@@ -15,12 +15,16 @@ To implementation this, I used [Moses](http://www.statmt.org/moses/?n=Moses.Over
 ### Step 1
 Create parallel corpuses as inputs to a machine translation system. The `test.en` file that has factore's feature in it and `test.fa` file that has `EZ` mark. This tow file most be cleaned. for cleaning operation I used moses instruction, such as: 
 
-` /home/alireze/mosesdecoder/scripts/training./clean-corpus-n.perl /home/test/test en fa clean-corpus 1 100 `
+```
+/home/alireze/mosesdecoder/scripts/training./clean-corpus-n.perl /home/test/test en fa clean-corpus 1 100 
+```
 
 ### Step 2
 Building a [Language Model](http://www.statmt.org/moses/?n=FactoredTraining.BuildingLanguageModel) from `test.fa` file with below command:
 
-` /home/alireza/mosesdecoder/bin/lmplz -o 3 -S 90% -T /tmp < /home/test/test.fa > /home/test/model.lm `
+```
+/home/alireza/mosesdecoder/bin/lmplz -o 3 -S 90% -T /tmp < /home/test/test.fa > /home/test/model.lm 
+```
 
 with this command, I used [KenLM language model toolkit](http://kheafield.com/code/kenlm/), which is included in Moses by default. So, language model type in `moses.ini` file must be changed to `KENLM`.
 
@@ -35,7 +39,9 @@ with this command, I used [KenLM language model toolkit](http://kheafield.com/co
 
 As with the LM, the phrase table can be processed and read from disk on-demand instead of being loaded in its entirety into memory. To binarize phrase tables, I used moses instruction, such as:
 
-` gzip -cd /home/test/model/phrase-table.gz | LC_ALL=C sort | /home/alireza/mosesdecoder/bin/processPhraseTable -ttable 0 0 - -nscores 5 -out /home/test/model/phrase-table `
+```
+gzip -cd /home/test/model/phrase-table.gz | LC_ALL=C sort | /home/alireza/mosesdecoder/bin/processPhraseTable -ttable 0 0 - -nscores 5 -out /home/test/model/phrase-table
+```
 
 ### Step 5 
 
@@ -51,7 +57,9 @@ Edit `moses.ini` file:
 
 in this step we can translate input file with below instruction: 
 
-`/home/alireza/mosesdecoder/bin/moses -f /home/test/model/moses.ini < /home/test/input.txt > /home/test/translate.txt` 
+```
+/home/alireza/mosesdecoder/bin/moses -f /home/test/model/moses.ini < /home/test/input.txt > /home/test/translate.txt
+``` 
 
 ## Tasks
 
