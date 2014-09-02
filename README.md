@@ -35,7 +35,7 @@ with this command, I used [KenLM language model toolkit](http://kheafield.com/co
 
 As with the LM, the phrase table can be processed and read from disk on-demand instead of being loaded in its entirety into memory. To binarize phrase tables, I used moses instruction, such as:
 
-` gzip -cd /home/test/model/phrase-table.gz | LC_ALL=C sort | /home/alireza/mosesdecoder/bin/processPhraseTable -ttable 0 0 - -nscores 5 -out /home/test/model/phrase-table`
+` gzip -cd /home/test/model/phrase-table.gz | LC_ALL=C sort | /home/alireza/mosesdecoder/bin/processPhraseTable -ttable 0 0 - -nscores 5 -out /home/test/model/phrase-table `
 
 ### Step 5 
 
